@@ -4,7 +4,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Vector2;
 
 public class Bird {
-    private static final int GRAVITY = -15;
+    private static final int GRAVITY = -10;
     private static final int MOVEMENT = 100;
 
     private Vector2 position;
@@ -34,7 +34,15 @@ public class Bird {
         texture.dispose();
     }
 
+    public void jump () {
+        velocity.y = 300;
+    }
+
     public Vector2 getPosition () {
         return this.position;
+    }
+
+    public Texture getTexture () {
+        return this.texture;
     }
 }

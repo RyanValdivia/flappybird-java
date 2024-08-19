@@ -20,7 +20,7 @@ public class MenuState extends State{
     @Override
     protected void handleInput () {
         if (Gdx.input.justTouched()) {
-            getGameStateManager().set(new PlayState());
+            getGameStateManager().set(new PlayState(getGameStateManager()));
         }
     }
 

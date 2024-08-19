@@ -6,6 +6,8 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.ScreenUtils;
+import com.tdl.flappybird.states.GameStateManager;
+import com.tdl.flappybird.states.MenuState;
 
 /** {@link com.badlogic.gdx.ApplicationListener} implementation shared by all platforms. */
 public class Main extends ApplicationAdapter {
@@ -14,25 +16,25 @@ public class Main extends ApplicationAdapter {
     public static final String TITLE = "Flappy Bird";
 
     private SpriteBatch batch;
-    private Texture image;
+    private GameStateManager gameStateManager;
+
 
     @Override
     public void create() {
         batch = new SpriteBatch();
-        image = new Texture("libgdx.png");
+        gameStateManager = new GameStateManager();
+        gameStateManager.push(new MenuState(gameStateManager));
     }
 
     @Override
     public void render() {
-        ScreenUtils.clear(0.15f, 0.15f, 0.2f, 1f);
-        batch.begin();
-        batch.draw(image, 0, 0);
-        batch.end();
+        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+        gameStateManager.update(Gdx.graphics.getDeltaTime());
+        gameStateManager.render(batch);
     }
 
     @Override
     public void dispose() {
-        batch.dispose();
-        image.dispose();
+        super.dispose();
     }
 }
