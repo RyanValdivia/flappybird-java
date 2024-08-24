@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.tdl.flappybird.Main;
+import com.tdl.flappybird.game.GameStateManager;
 
 public class MenuState extends State{
     private Texture background;
@@ -36,7 +37,7 @@ public class MenuState extends State{
         batch.draw(this.background, 0, 0);
         batch.draw(this.playButton,
             getCamera().position.x - this.playButton.getWidth() / 2,
-            getCamera().position.y);
+            getCamera().position.y - this.playButton.getHeight() / 2);
         batch.end();
     }
 

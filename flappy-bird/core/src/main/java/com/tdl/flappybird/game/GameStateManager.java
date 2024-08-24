@@ -1,6 +1,7 @@
-package com.tdl.flappybird.states;
+package com.tdl.flappybird.game;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.tdl.flappybird.states.State;
 
 import java.util.Stack;
 
@@ -20,7 +21,7 @@ public class GameStateManager {
     }
 
     public void set(State state){
-        this.states.pop().dispose();
+        this.pop();
         this.states.push(state);
     }
 

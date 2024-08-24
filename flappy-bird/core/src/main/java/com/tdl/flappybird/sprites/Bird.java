@@ -1,6 +1,7 @@
 package com.tdl.flappybird.sprites;
 
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 
 public class Bird {
@@ -10,32 +11,38 @@ public class Bird {
     private Vector2 position;
     private Vector2 velocity;
 
+    private Rectangle bounds;
+
     private Texture texture;
 
     public Bird (int x, int y) {
-        position = new Vector2(x, y);
-        velocity = new Vector2(0, 0);
-        texture = new Texture("bird.png");
+        this.position = new Vector2(x, y);
+        this.velocity = new Vector2(0, 0);
+        this.texture = new Texture("bird.png");
+
+        this.bounds = new Rectangle(x, y, texture.getWidth(), texture.getHeight());
     }
 
     public void update (float dt) {
-        if (position.y > 0) {
-            velocity.add(0, GRAVITY);
+        if (this.position.y > 0) {
+            this.velocity.add(0, GRAVITY);
         }
-        velocity.scl(dt);
-        position.add(MOVEMENT * dt, velocity.y);
-        if (position.y < 0) {
-            position.y = 0;
+        this.velocity.scl(dt);
+        this.position.add(MOVEMENT * dt, velocity.y);
+        if (this.position.y < 0) {
+            this.position.y = 0;
         }
-        velocity.scl(1  / dt);
+        this.velocity.scl(1  / dt);
+        this.bounds.x = this.position.x;
+        this.bounds.y = this.position.y;
     }
 
     public void dispose () {
-        texture.dispose();
+        this.texture.dispose();
     }
 
     public void jump () {
-        velocity.y = 300;
+        this.velocity.y = 300;
     }
 
     public Vector2 getPosition () {
@@ -44,5 +51,9 @@ public class Bird {
 
     public Texture getTexture () {
         return this.texture;
+    }
+
+    public Rectangle getBounds () {
+        return this.bounds;
     }
 }

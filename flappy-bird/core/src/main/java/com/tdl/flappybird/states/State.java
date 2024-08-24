@@ -3,6 +3,7 @@ package com.tdl.flappybird.states;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
+import com.tdl.flappybird.game.GameStateManager;
 
 public abstract class State {
     private GameStateManager gameStateManager;
