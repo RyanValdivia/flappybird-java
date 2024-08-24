@@ -7,6 +7,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
 import com.tdl.flappybird.Main;
 import com.tdl.flappybird.game.GameStateManager;
+import com.tdl.flappybird.sprites.Animation;
 import com.tdl.flappybird.sprites.Bird;
 import com.tdl.flappybird.sprites.Tube;
 
@@ -27,6 +28,8 @@ public class PlayState extends State {
     public PlayState(GameStateManager gameStateManager) {
         super(gameStateManager);
         this.bird = new Bird(50, 300);
+
+
         this.getCamera().setToOrtho
             (false, Main.WIDTH / 2, Main.HEIGHT / 2);
         this.background = new Texture("background.png");

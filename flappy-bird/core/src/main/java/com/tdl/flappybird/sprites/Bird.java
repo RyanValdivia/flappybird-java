@@ -1,6 +1,7 @@
 package com.tdl.flappybird.sprites;
 
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 
@@ -11,6 +12,8 @@ public class Bird {
     private Vector2 position;
     private Vector2 velocity;
 
+    private Animation animation;
+
     private Rectangle bounds;
 
     private Texture texture;
@@ -18,12 +21,15 @@ public class Bird {
     public Bird (int x, int y) {
         this.position = new Vector2(x, y);
         this.velocity = new Vector2(0, 0);
-        this.texture = new Texture("bird.png");
 
-        this.bounds = new Rectangle(x, y, texture.getWidth(), texture.getHeight());
+        this.texture = new Texture("birdanimation.png");
+        this.animation = new Animation(texture, 3, 0.5f);
+
+        this.bounds = new Rectangle(x, y, texture.getWidth() / 3, texture.getHeight());
     }
 
     public void update (float dt) {
+        animation.update(dt);
         if (this.position.y > 0) {
             this.velocity.add(0, GRAVITY);
         }
@@ -49,8 +55,8 @@ public class Bird {
         return this.position;
     }
 
-    public Texture getTexture () {
-        return this.texture;
+    public TextureRegion getTexture () {
+        return this.animation.getCurrentFrame();
     }
 
     public Rectangle getBounds () {
