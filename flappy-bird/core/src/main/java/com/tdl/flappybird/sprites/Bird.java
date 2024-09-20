@@ -55,7 +55,7 @@ public class Bird {
     }
 
     public void jump () {
-        this.velocity.y = 300;
+        this.velocity.y = 150;
         this.flap.play(0.5f);
     }
 

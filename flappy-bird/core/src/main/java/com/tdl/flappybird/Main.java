@@ -26,6 +26,7 @@ public class Main extends ApplicationAdapter {
         music.setLooping(true);
         music.setVolume(0.1f);
         music.play();
+        Gdx.gl.glClearColor(1, 0, 0, 1);
         gameStateManager.push(new MenuState(gameStateManager));
     }
 

@@ -4,6 +4,10 @@ apply plugin: 'com.android.application'
 android {
   namespace "com.tdl.flappybird"
   compileSdk 34
+  compileOptions {
+    sourceCompatibility JavaVersion.VERSION_17
+    targetCompatibility JavaVersion.VERSION_17
+  }
   sourceSets {
     main {
       manifest.srcFile 'AndroidManifest.xml'
